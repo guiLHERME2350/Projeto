@@ -1,12 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-/**
- *
- * @author 55119
- */
 public class TesteConexao {
-    
+
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/seu_banco"; // Substitua pelo nome do seu banco
+        String user = "seu_usuario";                          // Substitua pelo seu usuário
+        String password = "sua_senha";                        // Substitua pela sua senha
+
+        try {
+            Connection conn = DriverManager.getConnection(url, user, password);
+            System.out.println("✅ Conexão bem-sucedida com o banco de dados!");
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("❌ Erro ao conectar: " + ex.getMessage());
+        }
+    }
 }
