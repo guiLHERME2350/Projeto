@@ -5,9 +5,9 @@ import java.sql.SQLException;
 public class TesteConexao {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/seu_banco"; // Substitua pelo nome do seu banco
-        String user = "seu_usuario";                          // Substitua pelo seu usuário
-        String password = "sua_senha";                        // Substitua pela sua senha
+        String url = "jdbc:mysql://localhost:3306/sistemadeinventario";
+        String user = "root";                          
+        String password = "";                        
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);

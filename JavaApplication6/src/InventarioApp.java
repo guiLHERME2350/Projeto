@@ -34,7 +34,9 @@ public class InventarioApp extends JFrame {
     }
 
     private void inserirProduto() {
-        try (Connection conn = ConnectionDatabase.getConnection()) {
+       ConnectionDatabase db = new ConnectionDatabase();
+try (Connection conn = db.getConnection()) {
+
             String sql = "INSERT INTO inventario (nome_produto, quantidade) VALUES (?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, nomeField.getText());
@@ -47,7 +49,9 @@ public class InventarioApp extends JFrame {
     }
 
     private void listarInventario() {
-        try (Connection conn = ConnectionDatabase.getConnection()) {
+       ConnectionDatabase db = new ConnectionDatabase();
+try (Connection conn = db.getConnection()) {
+
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM inventario");
             inventarioArea.setText("");
