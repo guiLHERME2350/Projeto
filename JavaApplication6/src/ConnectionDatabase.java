@@ -1,28 +1,17 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConnectionDatabase {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/sistemadeinventario";
-    private static final String USER = "guiLHERME2350";
-    private static final String PASSWORD = "";
-
-    public static Connection getConnection() {
+    public Connection getConnection() {
         try {
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro na conexão: " + ex.getMessage());
-        }
-    }
-
-    public static void closeConnection(Connection conn, PreparedStatement stmt) {
-        try {
-            if (stmt != null) stmt.close();
-            if (conn != null) conn.close();
-        } catch (SQLException ex) {
-            System.out.println("Erro ao fechar conexão: " + ex.getMessage());
+            String url = "jdbc:mysql://localhost:3306/sistemadeinventario";
+            String user = "root";
+            String password = "";
+            return DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao conectar ao banco de dados", e);
         }
     }
 }
